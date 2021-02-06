@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+ {% block content %}
+    <title>Create Offer</title>
+
+
+{#{% block AddOffer %}#}
+
+    <legend>Add New Offer </legend>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <br><input type="submit" value="Add">
+    </form>
+{#{% endblock AddOffer %} #}
+ {% endblock content %}

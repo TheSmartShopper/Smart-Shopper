@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block content %}
+        <title>My Profile</title>
+
+    <div class="container-fluid" style="padding-top: 2%">
+        <div class="row">
+            <div class="col-3">
+                {% block profile %}
+                    {% include 'Customer_Card_Info.html' with profile=Profile %}
+                {% endblock profile %}
+            </div>
+            <div class="col-9" align="center">
+
+                {% include 'Customer_FavoriteList.html' with favorites=favorites %}
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

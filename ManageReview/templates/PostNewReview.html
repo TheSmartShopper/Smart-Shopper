@@ -1,0 +1,29 @@
+{% block PostNewReview %}
+
+    <div class="card my-4">
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+
+            <form method="post" action="{% url TO id %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                  style="height: 100px" name="text"></textarea>
+                        <label for="floatingTextarea2">Comments</label>
+                    </div>
+                    <select class="form-select" aria-label="Default select example" name="rating">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Post"/>
+            </form>
+        </div>
+    </div>
+
+{% endblock PostNewReview %}

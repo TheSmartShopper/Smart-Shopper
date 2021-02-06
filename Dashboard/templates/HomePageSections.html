@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block content %}
+    <title>Section Result</title>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            {% block AD_Slieds %}
+                {% include 'AD_s.html' with imgs=img %}
+            {% endblock AD_Slieds %}
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="accordion col-8" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                        Sections
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {% for section in sections %}
+                            <a class="btn btn-danger col-1 "
+                               href="{% url 'Dashboard:section' section %}">{{ section }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Filter
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {% include 'filter.html' with  myfilter=myfilter %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" style="padding-top: 40px" align="center">
+
+        <div class="col-md-12" align="center">
+            <div class="row">
+
+                {% for product in page_obj %}
+
+                    <div class="col-2">
+                        {% include 'product_in_squre_card.html' with product=product %}
+                    </div>
+                {% empty %}
+                    <hr>
+                {% endfor %}
+
+                {% if page_obj %}
+                    <div class="row" style="padding-top: 50px">
+                        <div class="col-4"> &emsp;</div>
+                        <div class="col-6">
+                            <nav aria-label="...">
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        {% if page_obj.has_previous %}
+                                            <li class="page-item"><a class="page-link" href="?page=1">&laquo;
+                                                first</a>
+                                            </li>
+
+
+                                            <span class="page-link"
+                                                  href="?page={{ page_obj.previous_page_number }}">Previous</span>
+
+                                            <li class="page-item"><a class="page-link"
+                                                                     href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                                            </li>
+                                            </li>
+                                        {% endif %}
+                                    <li class="page-item active" aria-current="page">
+                                        <span class="page-link"> {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                                    </li>
+                                    {% if page_obj.has_next %}
+                                        <li class="page-item"><a class="page-link"
+                                                                 href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                                        </li>
+
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                               href="?page={{ page_obj.next_page_number }}">Next</a>
+                                        </li>
+                                        <li class="">
+                                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last
+                                                &raquo;</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+
+                        </div>
+
+                    </div>
+                {% else %}
+                    <a href="{% url 'Dashboard:Home' %}" class="btn btn-success"> back to Home </a>
+                {% endif %}
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock content %}

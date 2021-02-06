@@ -1,0 +1,30 @@
+{% load bootstrap5 %}
+{% block add_ads %}
+    <div class="container-fluid">
+        <div class="row">
+            {% for ad in store.ADs.all %}
+
+                <div class="col-3" style="padding-left: 5px">
+                    <form action="{% url 'ManageStore:delete_ADs' ad.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <img src="{{ ad.ad_imags.url }}" height="200px" width="200px" border="2" >
+                            <button type="submit" class="btn btn-danger" >Delete</button>
+                        </div>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <form action="{% url 'ManageStore:add_ADs' %} " enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                   <br> <button type="submit" class="btn btn-success">Upload</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock add_ads %}

@@ -1,0 +1,14 @@
+{% block FavoriteList %}
+    <div class="row">
+        <div class="card-title">
+            <h3>My Favorite</h3>
+        </div>
+        {% for item in  favorites %}
+            <div class="col-3">
+                {% include 'product_in_squre_card.html' with product=item %}
+            </div>
+        {% empty %}
+            <h3 class="card-body" style="color: #ff001b">Favorite Empty</h3>
+        {% endfor %}
+    </div>
+{% endblock FavoriteList %}

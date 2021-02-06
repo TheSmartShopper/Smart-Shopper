@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+    <title>Edit Offer</title>
+
+
+    {#{% block AddOffer %}#}
+
+    <legend>Edit Offer</legend>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Save" class="btn btn-success">
+    </form>
+    <hr>
+    <a href="{% url 'ManageProduct:product_create' %}" class="btn btn-success" style="margin-right: 0px"> Create new Product </a>
+
+    {#{% endblock AddOffer %} #}
+{% endblock content %}

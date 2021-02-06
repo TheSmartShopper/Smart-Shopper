@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block content %}
+    <title>Log in</title>
+
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+        {% else %}
+            <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+<br>
+<br>
+<br>
+
+<div class="container" >
+  <div class="row justify-content-start">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+
+    </div>
+  </div>
+
+  </div>
+  <div class="row justify-content-end">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col-4">
+        <div class="container" >
+            <form action="" method="post">
+                {% csrf_token %}
+                <br>
+
+                <br>
+                {% bootstrap_form form %}
+                <br>
+                {% bootstrap_button "login" button_type="submit" button_class="btn-primary" %}
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <a class="nav-item btn btn-light" href="{% url 'accounts:signup' %}">Sign up</a>
+            </form>
+            <br>
+            <p><a class="btn btn-light" href="{% url 'accounts:password_reset' %}">Lost password?</a></p>
+            <br>
+            <br>
+        </div>
+    </div>
+    </div>
+  </div>
+    <br>
+    <br>
+  <div class="row justify-content-between">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+
+    </div>
+  </div>
+</div>
+     {# Assumes you setup the password_reset view in your URLconf #}
+
+
+
+
+
+{% endblock content %}
+
+

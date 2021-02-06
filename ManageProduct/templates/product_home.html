@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+        <title>View Product</title>
+
+    {% block  product_home %}
+        <div class="container">
+            <div class="row">
+                {% block product_card %}
+                    {% include 'product_card.html' with product=product %}
+                {% endblock product_card %}
+
+            </div>
+
+            <div class="row ">
+                <div class="col-6 ">
+
+                    {% block PostNewReview %}
+                        {% include 'PostNewReview.html' with form=form TO='ManageReview:add-product-review' id=product.id %}
+                    {% endblock PostNewReview %}
+
+                    {% for review in product.ProductReview.all %}
+                        {% block review_card %}
+                            {% include 'review_card.html' with review=review %}
+                        {% endblock review_card %}
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </div>
+    {% endblock product_home %}
+{% endblock content %}

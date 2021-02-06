@@ -1,0 +1,29 @@
+{% block StoreAdminCardInfo %}
+    <div class="col">
+        <div class="card">
+            <div class="card-img-top">
+                {% if profile.image %}
+                    <img class="img-fluid" src="{{ profile.image.url }}">
+                {% else %}
+                    <img src="http://placehold.it/400x400" class="card-img-top" alt="...">
+                {% endif %}
+            </div>
+            <h5 class="card-title" align="center">
+                <b>{{ profile.user }}</b>
+            </h5>
+            <div class="card-body">
+                <h6><b> Address </b>{{ profile.address }} </h6>
+                <h6><b> Join At </b> {{ profile.join_at }}</h6>
+                <h6><b> Country </b>{{ profile.country.name }} </h6>
+                <h6><b> Manager of Store </b> {{ profile.store }}</h6>
+                <h6><b> Number Of Products </b> {{ profile.store.products.count }}</h6>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last Login{{ request.user.last_login }}</small>
+                <a class="btn btn-primary zoom_in"
+                   href="{% url 'accounts:StoreAdminEditProfileView' %}">Edit
+                    Profile</a>
+            </div>
+        </div>
+    </div>
+{% endblock StoreAdminCardInfo %}

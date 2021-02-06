@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="Dashboard:Home">Smart Shopper</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active zoom_in" aria-current="page" href="{% url 'Dashboard:Home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active zoom_in" aria-current="page" href=" {% url 'accounts:StoreAdminProfileView' %}">Profile</a>
+
+                </li>
+                <li class="nav-item">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active zoom_in" aria-current="page"
+                       href="{% url 'ManageStore:view_store' request.user.storeadminprofile.store.id %}">My Store (
+                        {{ request.user.storeadminprofile.store }} )</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link zoom_out " href="{% url 'Dashboard:Maptest' %}">Map Test</a>
+                </li>
+
+                 </li>
+                  <li class="nav-item">
+                    <a class="nav-link zoom_out " href="{% url 'ManageOffer:view_all_offers' %}">Offers</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link zoom_in" href="{% url 'accounts:logout' %}">logout</a>
+                </li>
+            </ul>
+            <form class="d-flex" action="{% url 'Dashboard:search' %}" method="GET" value="{{ request.GET.q }}">
+                <input class="form-control me-2 zoom_in " type="search" placeholder="Search" aria-label="Search" name="q"
+                       value="{{ request.GET.q }}">
+                <button class="btn btn-outline-success zoom_in" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+{% comment %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Dashboard:Home' %}">Home</a>
+                </li>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-list-4">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                                     width="30" height="30" class="rounded-circle">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                                <a class="dropdown-item"
+                                   href="{% url 'accounts:StoreAdminProfileView' request.user.storeadminprofile %}">Profile
+                                    Info </a>
+
+                                <a class="dropdown-item"
+                                   href="{% url 'accounts:StoreAdminEditProfileView' request.user.storeadminprofile.slug %}">Edit
+                                    Profile</a>
+                                <a class="dropdown-item" href="{% url 'Dashboard:Home' %}">Dashboard</a>
+                                <a class="dropdown-item" href="{% url 'ManageOffer:Offerview' %}">MangeOffer</a>
+                                <a class="dropdown-item" href="{% url 'ManageProduct:product_new' %}">AddProduct</a>
+                                <a class="dropdown-item" href="{% url 'ManageStore:EditStoreDetail' request.user.storeadminprofile.store.id %}">EditStore</a>
+                                #<a class="dropdown-item" href="{% url 'Man' %}">AddOffer</a>
+
+                                <a class="dropdown-item" href="{% url 'accounts:logout' %}">Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endcomment %}

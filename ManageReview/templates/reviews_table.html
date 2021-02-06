@@ -1,0 +1,25 @@
+{% block reviews_table %}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col-2">author</th>
+            <th scope="col-7">Review Text</th>
+            <th scope="col-3">Rate</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for review in reviews %}
+            <tr>
+                <td> {{ review.customerprofile_set.first }}</td>
+                <td>{{ review.text }}</td>
+                <td>{{ review.rating }}/5</td>
+            </tr>
+        {% empty %}
+            <h3>No Review</h3>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock reviews_table %}

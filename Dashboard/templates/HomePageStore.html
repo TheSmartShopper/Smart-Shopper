@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block content %}
+    <div>
+        <div class="row">
+            <div class="col-lg-12">
+                {% block AD_Slieds %}
+                    {% include 'AD_s.html' with imgs=img %}
+                {% endblock AD_Slieds %}
+
+            </div>
+        </div>
+        <div class="row" style="padding-top: 56px" align="center">
+            <div class="col-md-2">
+                {% block sections %}
+
+                   {% include 'sections.html' with sections=sections %}
+                {% endblock sections %}
+            </div>
+            <div class="col-md-7">
+                {% block Store %}
+                    {% include 'stores_in_squre_card.html' with Stores=Stores %}
+                {% endblock Store %}
+
+                {% for product in store.products.all %}
+
+                    {% include 'product_in_squre_card.html' with product=product %}
+                {% empty %}
+                    <hr>
+                {% endfor %}
+
+
+            </div>
+            <div class="col-md-3">
+
+                {% block Search %}
+                    {% include 'filter.html' with myfilter=myfilter %}
+                {% endblock Search %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

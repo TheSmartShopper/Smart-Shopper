@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% block content %}
+        <title>Edit Profile</title>
+
+    <div class="container" style="padding-top: 56px">
+        <form action="" enctype="multipart/form-data" method="post">
+            {% csrf_token %} {% bootstrap_form user_form %}
+            {% bootstrap_form form %}
+            <br>
+            <hr>
+            <div align="center">
+                <input type="submit" value="Update" class="btn btn-success zoom_in" align="center">
+            </div>
+        </form>
+    </div>
+{% endblock %}

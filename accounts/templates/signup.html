@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block content %}
+    <title>Sign Up</title>
+
+
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-2"></div>
+            <div class="col-md-8 col-sm-10 col-12">
+            <h2>Sign up</h2>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {#                <input type="hidden" name="next" value="{{ next }}">#}
+                {% bootstrap_form form %}
+                <button type="submit" class="btn btn-success zoom_in">Sign up</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    {% comment %}  <h2>Sign up for a free account</h2>
+    <p class="lead">Select below the type of account you want to create</p>
+    <a href="{% url 'Customer_signup' %}" class="btn btn-student btn-lg" role="button">I'm a Customer</a>
+    <a href="{% url 'StoreAdmin_signup' %}" class="btn btn-teacher btn-lg" role="button">I'm a StoreAdmin</a>{% endcomment %}
+{% endblock %}

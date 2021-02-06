@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <title>View Offer</title>
+
+{% ifnotequal offer None %}
+{{ offer.price }}
+{% endifnotequal %}
+
+
+    <section>
+        {% block offer_card %}
+            {% include 'offer_card.html' with offer=offer %}
+        {% endblock %}
+    </section>
+    <section>
+
+        {% block PostNewReview %}
+            {% include 'PostNewReview.html' with form=form TO='ManageReview:add_offer_review' id=offer.pk  %}
+        {% endblock PostNewReview %}
+
+    </section>
+    <section>
+        {% for review in offer.review.all %}
+            {% block review_card %}
+                {% include 'review_card.html' with review=review %}
+            {% endblock review_card %}
+            {% empty %}
+            NON
+        {% endfor %}
+    </section>
+
+
+
+
+
+{% endblock content %}

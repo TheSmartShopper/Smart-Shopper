@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+        <title>Store Detail</title>
+    <div class="container">
+        {% block Store %}
+
+            <div class="row">
+                <div class="col-3">
+                    {% block PostNewReview %}
+                        {% include 'PostNewReview.html' with form=form TO='ManageReview:add-store-review' id=store.id %}
+                    {% endblock PostNewReview %}
+
+                    {% for review in store.StoreReviews.all %}
+                        {% block review_card %}
+                            {% include 'review_card.html' with review=review %}
+                        {% endblock review_card %}
+                    {% endfor %}
+                </div>
+
+                <div class=" col-9">
+                <div class="row" style="margin:5px">
+                    {% block sections %}
+                       {% include 'sections.html' with sections=store.sections.all %}
+                    {% endblock sections %}
+                </div>
+
+                    <div class="row">
+
+                        {% block StoresADslide %}
+                            {% include 'StoresADslide.html' with ad=ads %}
+                        {% endblock StoresADslide %}
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        {% for product in products %}
+
+                            {% include 'product_in_squre_card.html' with product=product %}
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        {% endblock Store %}
+
+    </div>
+
+{% endblock content %}

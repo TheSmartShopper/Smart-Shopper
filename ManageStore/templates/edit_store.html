@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+    <title>Edit Store</title>
+
+    <div class="container">
+    <form action="" enctype="multipart/form-data" method="post">
+
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <br><input type="submit" value="Save" class="default" name="_save">
+
+    </form>
+ </div>
+{% endblock %}

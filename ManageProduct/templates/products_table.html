@@ -1,0 +1,60 @@
+{% block product_table %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Type</th>
+            <th scope="col">Number Of Copy</th>
+            <th scope="col">Par Code</th>
+            <th scope="col">Discount</th>
+            <th scope="col">Options</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for product in products %}
+            <tr>
+                <td>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="{{ product.id }}">
+                        <label class="custom-control-label" for="{{ product.id }}"></label>
+                    </div>
+                </td>
+                <th scope="row">{{ product.id }}</th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.type }}</td>
+                <td>{{ product.number_Of_Copy }}</td>
+                <td>{{ product.par_Code }}</td>
+                <td>{{ product.discount }}</td>
+
+                <td>
+
+                    <form action="{% url 'ManageProduct:delete_product' product.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit"
+                                class="btn btn-danger ">delete
+                        </button>
+                        <a href="{% url 'ManageProduct:update_product' product.pk %}" class="btn btn-warning ">Edit</a>
+                        <a href="{% url 'ManageProduct:product_view' product.pk %}" class="btn btn-success ">View</a>
+                    </form>
+
+                </td>
+            </tr>
+
+
+        {% empty %}
+            <h1 align="center" style="color: red"><b> THE ARE NO PRODUCT </b></h1>
+
+        {% endfor %}
+        <hr>
+        <div align="center">
+        <a href="{% url 'ManageProduct:product_create' %}" class="btn btn-success ">ADD NEW PRODUCT </a>
+        </div></tbody>
+
+    </table>
+
+{% endblock product_table %}

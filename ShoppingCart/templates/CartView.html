@@ -1,0 +1,14 @@
+{% load bootstrap5 %}
+{% load static %}
+{% block cart %}
+
+        {% block CartItem %}
+            {% include 'CartItem.html' with items=cart.item.all %}
+        {% endblock CartItem %}
+
+        {% block offer_card %}
+            {% include 'offer_card.html' with offers=cart.offers.all %}
+        {% endblock offer_card %}
+
+
+{% endblock cart %}

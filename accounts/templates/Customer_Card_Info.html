@@ -1,0 +1,33 @@
+{% load bootstrap5 %}
+{% load static %}
+{% block profile %}
+    <div class="container">
+        <div class="row">
+            <div class="card col-md">
+                <div class="row">
+                    {% if profile.image %}
+                        <img src="{{ profile.image.url }}" class="img-responsive col-md" alt="...">
+                    {% else %}
+                        <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                             class="card-img-top" alt="">
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ profile }}</h5>
+                    <p class="card-text">
+
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>address :</b>{{ profile.address }}</li>
+                    <li class="list-group-item"><b>join_at :</b>{{ profile.join_at }}</li>
+                    <li class="list-group-item"><b>country :</b>{{ profile.country.name }}</li>
+                    <li class="list-group-item"><b> last login :</b>{{ profile.user.last_login }}</li>
+                    <li class="list-group-item">
+                        <a class="btn btn-primary zoom_in" href="{% url 'accounts:Customer_Edit_Profile_View' %}"
+                           role="button">Edit Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

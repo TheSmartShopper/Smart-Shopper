@@ -1,0 +1,13 @@
+{% block review_card %}
+        <title>Review</title>
+
+    <div class="media mb-4">
+        <img class="rounded-circle" src="{{ review.customerprofile_set.first.image.url }}" alt="" height="30"
+             width="30">  <b style="padding-left: 10px">{{ review.customerprofile_set.first }}</b>
+        <div class="media-body">
+
+            {{ review.text }}
+        </div>
+        {{ review.rating }}/5
+    </div>
+{% endblock review_card %}

@@ -1,0 +1,8 @@
+{% load bootstrap5 %}
+{% block CartItem %}
+    <div>
+        {% block product_card %}
+            {% include 'product_card.html' with product=item.product %}
+        {% endblock product_card %}
+    </div>
+{% endblock CartItem %}

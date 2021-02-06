@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <title>Shopping Cart</title>
+
+    {% block view_shopping_cart %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for item  in cart.items.all %}
+                        {% block CartItem %}
+                            {% include 'CartItem.html' with item=item %}
+                        {% endblock CartItem %}
+                    {% endfor %}
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% for offer in cart.offers.all %}
+                                {% block CartOffer %}
+                                    {% include 'CartOffer.html' with offer=offer %}
+                                {% endblock CartOffer %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+
+
+    {% endblock view_shopping_cart %}
+
+{% endblock content %}

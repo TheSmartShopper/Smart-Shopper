@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+<h1>Product Delete</h1>
+<form method="post">{% csrf_token %}
+    Are you sure you want to delete "{{ object }}" ?
+    <input type="submit" value="Submit" />
+</form>
+{% endblock content %}

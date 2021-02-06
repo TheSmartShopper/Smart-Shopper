@@ -1,0 +1,20 @@
+{% block sections %}
+        <title>Section</title>
+
+    <br>
+    <div >
+        {% if sections %}
+            {% for section in sections %}
+                <div class="list-group-item">
+                <a href="{% url 'Dashboard:section' section.name %}" class="btn bg-primary" >{{ section.name|slice:'10' }}</a>
+                </div>
+            {% empty %}
+                NON
+            {% endfor %}
+
+        {% else %}
+            <a href="" class="list-group-item">The are No section</a>
+        {% endif %}
+    </div>
+    <br>
+{% endblock sections %}

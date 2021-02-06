@@ -1,0 +1,61 @@
+{% block Store_services %}
+    <div>
+
+
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <!--Product's -->
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab"
+                   aria-controls="pills-home" aria-selected="true">Product's</a>
+            </li>
+            <!--Offer's -->
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="pills-Offer-tab" data-bs-toggle="pill" href="#pills-Offer" role="tab"
+                   aria-controls="pills-Offer" aria-selected="false">Offer's</a>
+            </li>
+            <!--AD image's -->
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="pills-ADs-tab" data-bs-toggle="pill" href="#pills-ADs" role="tab"
+                   aria-controls="pills-ADs" aria-selected="false">AD image's</a>
+            </li>
+            <!--My Review  -->
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="pills-Review-tab" data-bs-toggle="pill" href="#pills-Review" role="tab"
+                   aria-controls="pills-Review" aria-selected="false">My Review</a>
+            </li>
+            <li>
+                            <a href="{% url 'ManageStore:edit_store'%}" class="btn bg-warning">Edit Store info </a>
+
+            </li>
+
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <!--Product's -->
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                {% block product_table %}
+                    {% include 'products_table.html' with products=store.products.all %}
+                {% endblock product_table %}
+            </div>
+            <!--Offer's -->
+            <div class="tab-pane fade" id="pills-Offer" role="tabpanel" aria-labelledby="pills-Offer-tab">
+                {% block offer_table %}
+                    {% include 'offers_table.html' with offers=store.StoreOffers.all %}
+                {% endblock offer_table %}
+            </div>
+            <!--AD image's -->
+            <div class="tab-pane fade" id="pills-ADs" role="tabpanel" aria-labelledby="pills-ADs-tab">
+                {% block add_ads %}
+                    {% include 'add_ADs.html' with store=store form=form%}
+                {% endblock add_ads %}
+            </div>
+            <!--My Review  -->
+            <div class="tab-pane fade" id="pills-Review" role="tabpanel" aria-labelledby="pills-Review-tab">
+                {% block reviews_table %}
+                    {% include 'reviews_table.html' with reviews=store.StoreReviews.all %}
+                {% endblock reviews_table %}
+            </div>
+        </div>
+
+
+    </div>
+{% endblock Store_services %}

@@ -69,12 +69,10 @@ def productsfilter(request):
 
 
 def error_404(request, exception):
-    messages.success(request, 'Opps The are some Thing wrong . . . ')
     return redirect('Dashboard:Home')
 
 
 def error_500(request, exception):
-    messages.success(request, 'Opps The are some Thing wrong . . . ')
     return redirect('Dashboard:Home')
 
 

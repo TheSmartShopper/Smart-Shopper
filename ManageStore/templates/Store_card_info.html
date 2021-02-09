@@ -1,12 +1,14 @@
 {% block store_card %}
-    <div class="card mb-3"  >
+    <div class="card ">
         <a href="{% url 'ManageStore:view_store' store.id %}">
-            <img src="{{ store.image.url }}" class="img-fluid" alt=""  style="min-height: 150px;min-width:250px;max-height: 150px;max-width:250px "></a>
+            <img src="{{ store.image.url }}"
+                 class="img-fluid" alt=""   style="min-height: 150px;min-width:279px;max-height: 150px;max-width:280px"
+            ></a>
         <div class="card-body">
             <a href="{% url 'ManageStore:view_store' store.id %}"><h5 class="card-title">{{ store.name|slice:"20" }}</h5></a>
             {% if store.is_open_now %}
                 <p class="card-text">
-                    <small class="text-muted"> Hours works {{ store.start_hours }} TO {{ store.close_hours }} </small>
+                    <small class="text-muted"> Hours works {{ store.start_hours }} TO {{ store.close_hours }} </small><br>
                     <small class="text-muted"><b style="color: #28a745">Open</b>
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                              class="bi bi-door-open " viewBox="0 0 16 16" style="color: #28a745">

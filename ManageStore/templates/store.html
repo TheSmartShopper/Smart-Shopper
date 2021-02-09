@@ -19,9 +19,16 @@
 
                 <div class=" col-9">
                 <div class="row" style="margin:5px">
-                    {% block sections %}
-                       {% include 'sections.html' with sections=store.sections.all %}
-                    {% endblock sections %}
+{#                    {% block sections %}#}
+{#                       {% include 'sections.html' with sections=store.sections.all %}#}
+{#                    {% endblock sections %}#}
+                    {% for s in sec %}
+
+                     <a href="{% url 'ManageStore:view_store_section' store.id s.name %}" class="btn bg-primary col-1" style="margin-left: 5px">
+                        {{ s.name|slice:'10' }}</a>
+                    {% endfor %}
+
+
                 </div>
 
                     <div class="row">

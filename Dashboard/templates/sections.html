@@ -1,14 +1,15 @@
 {% block sections %}
-        <title>Section</title>
+    <title>Section</title>
 
     <br>
-    <div >
+    <div>
         {% if sections %}
             {% for section in sections %}
-                <div class="list-group-item">
-                <a href="{% url 'Dashboard:section' section.name %}" class="btn bg-primary" >{{ section.name|slice:'10' }}</a>
-                </div>
-            {% empty %}
+
+                    <a href="{% url 'Dashboard:section' section.name %}" class="btn bg-primary">
+                        {{ section.name|slice:'10' }}</a>
+
+                {% empty %}
                 NON
             {% endfor %}
 

@@ -3,18 +3,20 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, get_object_or_404, render
 
 from ManageStore.forms import EditStoreForm, CreateStoreForm
-from ManageStore.models import Store, AD_imags
+from ManageStore.models import Store, AD_imags, Section
 from accounts.models import StoreAdminProfile
 
 
-def view_store(request, store_id):
+def view_store(request, store_id ):
     store = get_object_or_404(Store, id=store_id)
+    sec= store.sections.all()
     products = store.products.all()
     ads = store.ADs.all()
     context = {
         'store': store,
         'products': products,
         'ads': ads,
+        'sec':sec,
     }
     return render(request, 'store.html', context)
 
@@ -82,4 +84,13 @@ def add_ADs(request):
 
 def products_in_section(request, store_id, section):
     store = get_object_or_404(Store, id=store_id)
-    return store.products.filter(product_sections=section)
+    products=store.products.filter(product_sections=section)
+    sec = store.sections.all()
+    ads = store.ADs.all()
+    context = {
+        'store': store,
+        'products': products,
+        'ads': ads,
+        'sec': sec,
+    }
+    return render(request, 'store.html', context)

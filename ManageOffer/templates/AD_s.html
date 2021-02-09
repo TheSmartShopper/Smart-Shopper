@@ -2,7 +2,7 @@
 
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
-            {% if ads %}
+
                 <div class="carousel-item active">
                     <img src="{{ ads.first.ad_imags.url }}" class="d-block" alt="..."
                          style="min-height:300px;min-width:100%;max-height: 300px;max-width:100% ">
@@ -12,16 +12,12 @@
                         <img src="{{ ad.ad_imags.url }}" class="d-block" alt="..."
                              style="min-height:300px;min-width:100%;max-height: 300px;max-width:100% ">
                     </div>
-                {% endfor %}
-                <div class="carousel-item active">
+                    {% empty %}
+                    <div class="carousel-item active">
                     <img src="http://placehold.it/900x350" class="d-block" alt="..."
                          style="min-height:300px;min-width:100%;max-height: 300px;max-width:100% ">
                 </div>
-
-            {% else %}
-
-            {% endif %}
-
+                {% endfor %}
         </div>
 
         <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-bs-slide="prev">

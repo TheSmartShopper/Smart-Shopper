@@ -1,7 +1,10 @@
-<!DOCTYPE html>
+
 <html>
   <head>
     <title>Displaying Text Directions With setPanel()</title>
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5wqfNN1UoygvcAPXvYBwgXZKW_SQOQ5Q&callback=initMap&libraries=&v=weekly"
@@ -86,6 +89,23 @@
           width: auto;
         }
       }
+
+       .zoom {
+            padding: 50px;
+            transition: transform .2s; /* Animation */
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .zoom_in:hover {
+            transform: scale(0.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+
+        .zoom_out:hover {
+            transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+
     </style>
     <script>
       function initMap() {
@@ -176,7 +196,13 @@
       <br />
       <strong>End:</strong>
       <select id="end">
-        <option value="Irbid City Center">Irbid City Center</option>
+
+          {% for store in stores %}
+             <option value="{{ store.address }}">{{ store.address }}</option>
+          {% endfor %}
+      <!--
+{#
+
         <option value="Safeway, Irbid">Safeway</option>
         <option value="Arabella Mall. Irbid">Arabella Mall. Irbid</option>
         <option value="Al-Mokhtar Stores, 25, Irbid">Al-Mokhtar Stores</option>
@@ -186,15 +212,21 @@
         <option value="Sameh Mall, Wasfi At-Tal St.، Aydoun">Sameh Mall</option>
         <option value="Bakery Restaurants & Sweets Abu Rashid, Wasfi At-Tal St.، Aydoun">Bakery Restaurants & Sweets Abu Rashid</option>
         <option value="MK Mart, Irbid">MK Mart</option>
+#}
+-->
 
-           <option value="{{ loc }}">{{ loc }}</option>
 
       </select>
     </div>
-    <div id="right-panel"></div>
+    <div id="right-panel">
+        <br>
+        <a class="btn btn btn-success zoom_out " href="{% url 'Dashboard:Home' %}" style="padding-left: 1cm"> back to home  . . . </a>
+
+    </div>
     <div id="map"></div>
   </body>
 </html>
+
 <!--
 <!DOCTYPE html>
 <html>
